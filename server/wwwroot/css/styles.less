@@ -1,5 +1,6 @@
 // out: ./chess.css, sourcemap: true, compress: true
-@import "./variables.less";
+@import ".//variables.less";
+@import "./bootstrapButton.less";
 
 body{
   background-color: #4A525A;
@@ -11,11 +12,36 @@ h1{
   font-family: sans-serif;
 }
 
-p{
+.load-game-group{
+  font-family: sans-serif;
 
+  font-size: 18px;
+
+  input {
+    border: 5px solid white;
+    -webkit-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+    inset 0 0 8px  rgba(0,0,0,0.1),
+    0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 18px;
+
+  }
+a{
+margin-top: 0px;
 }
 
-
+  margin:15px;
+  margin-left: 0px;
+}
 #ChessBoard{
 
   width: @boardSize;
@@ -26,8 +52,8 @@ p{
 
 .btn{
   margin-top:20px;
-font-family: sans-serif;
-text-decoration: none;
+  font-family: sans-serif;
+  text-decoration: none;
 }
 
 @square-size: calc(@boardSize / 8);

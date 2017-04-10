@@ -1,6 +1,13 @@
 function colToLetter(col){
   return ("abcdefgh")[col]
 }
+function loadGame(){
+
+  var name = $("#load-game-field")[0].value;
+  window.location = 'index.html?game=' + name;
+
+}
+
 
 var board = $( "#ChessBoard" );
 
@@ -240,8 +247,16 @@ function drop(ev) {
   };
 
   xhr.send(null);
-
 }
+
+document.getElementById('load-game-field').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+        loadGame();
+      return false;
+    }
+  }
 
 
 

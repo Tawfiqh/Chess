@@ -19,15 +19,13 @@
 
 <h1 id="ChessTitle">Chess</h1>
 
-<div id="ChessBoard">
+<div id="ChessBoard"></div>
 
-</div>
+<a class="btn btn-lg btn-default" href="javascript:saveState()" role="button">Save state</a>
 
-<a class="btn btn-lg btn-primary" href="javascript:saveState()" role="button">Save state</a>
-
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+<div class="load-game-group">
+  <input type="text" class="form-control" id="load-game-field" aria-describedby="basic-addon3">
+  <a id="load-button" class="btn btn-lg btn-default" href="javascript:loadGame()" role="button">Load game</a>
 </div>
 
 
