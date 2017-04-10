@@ -38,7 +38,7 @@ console.log(state);
 xhr = new XMLHttpRequest();
 var url = "http://localhost:5000/api/chess";
 xhr.open("POST", url, true);
-xhr.setRequestHeader("Content-type", "application/json");
+xhr.setRequestHeader("Content-type", "application/jsonp"); //json[
 xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
         var json = JSON.parse(xhr.responseText);
@@ -46,7 +46,7 @@ xhr.onreadystatechange = function () {
     }
 }
 
-var data = JSON.stringify(state);
+var data = "hi"//JSON.stringify(state);
 xhr.send(data);
 
 

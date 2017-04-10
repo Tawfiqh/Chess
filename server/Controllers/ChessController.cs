@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace server.Controllers
 {
     [Route("api/[controller]")]
     public class ChessController : Controller
+    {[Produces("text/html")]
+    public string Get() 
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        return "<html><body>Hello World</body></html>";
+    // var path = "../index.html";
+    // var response = new HttpResponseMessage();
+    // response.Content =  new StringContent(File.ReadAllText(path));
+    // response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+    // return response;
+
+    }
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -27,6 +34,7 @@ namespace server.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
+            Console.WriteLine(value);
         }
 
         // PUT api/values/5
@@ -35,10 +43,5 @@ namespace server.Controllers
         {
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
