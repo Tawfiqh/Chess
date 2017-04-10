@@ -26,10 +26,28 @@ function saveState(){
     }
   }
 
-console.log(state);
 //Some other properties i would want to populate in a chess game. Populated with sample data here
 state.currentPlayer = "w";
 state.currentMove = "13";
+
+// Sending and receiving data in JSON format using POST mothod
+
+console.log(state);
+
+
+xhr = new XMLHttpRequest();
+var url = "http://localhost:5000/api/chess";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-type", "application/json");
+xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(state)
+    }
+}
+
+var data = JSON.stringify(state);
+xhr.send(data);
 
 
 }
@@ -150,12 +168,22 @@ function drop(ev) {
   //Draw the white pieces
   drawPawns(2, "w");
 
+  //Draw the black pieces
   drawPawns(7, "b");
 
-  //Draw the black pieces
 
-
-  //Drag and drop code
-
+  gameNumb = function(name, url) {
+      if (!url) {
+        url = window.location.href;
+      }
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }("game");
+  console.log("gameNumb");
+  console.log(gameNumb);
 
 })();

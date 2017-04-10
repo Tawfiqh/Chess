@@ -1,0 +1,8 @@
+/Users/Tawfiq/Desktop/Chess game/server/bin/Debug/netcoreapp1.1/server.deps.json
+/Users/Tawfiq/Desktop/Chess game/server/bin/Debug/netcoreapp1.1/server.runtimeconfig.json
+/Users/Tawfiq/Desktop/Chess game/server/bin/Debug/netcoreapp1.1/server.runtimeconfig.dev.json
+/Users/Tawfiq/Desktop/Chess game/server/bin/Debug/netcoreapp1.1/server.dll
+/Users/Tawfiq/Desktop/Chess game/server/bin/Debug/netcoreapp1.1/server.pdb
+/Users/Tawfiq/Desktop/Chess game/server/obj/Debug/netcoreapp1.1/server.AssemblyInfo.cs
+/Users/Tawfiq/Desktop/Chess game/server/obj/Debug/netcoreapp1.1/server.dll
+/Users/Tawfiq/Desktop/Chess game/server/obj/Debug/netcoreapp1.1/server.pdb
