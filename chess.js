@@ -1,15 +1,96 @@
-function allowDrop(ev) {
-    ev.preventDefault();
+ function colToLetter(col){
+  return ("abcdefgh")[col]
 }
 
+function saveState(){
+  state = {};
+  state.grid = {};
+
+  var i =0;
+  for(var r = 0; r < 8; r++) {
+    for(var c = 0; c < 8; c++) {
+
+      colLetter = colToLetter(c);
+      gridName = "#grid-" + colLetter + (8-r);
+
+      gridContents = $(gridName).children();
+
+      //empty
+      if(gridContents.length == 0)
+        state.grid[gridName.substring(6)] = ""
+      //Has a piece in it so record it
+      else{
+        state.grid[gridName.substring(6)] = gridContents[0].id;
+      }
+      i++;
+    }
+  }
+
+console.log(state);
+//Some other properties i would want to populate in a chess game. Populated with sample data here
+state.currentPlayer = "w";
+state.currentMove = "13";
+
+
+}
+
+function checkValidMove(piece, origin, destination){
+
+  //Pawn rules
+  if(piece[1] == "P"){
+    if(origin[0] != destination[0])
+    return false;
+
+
+    o = parseInt(origin[1]);
+    d = parseInt(destination[1]);
+
+    colour = piece[0];
+
+    if(colour == "w"){
+      if(!(o+1 == d || o+2 == d))
+        return false;
+      if(o+2 == d && o != 2)
+        return false;
+    }
+
+    if(colour == "b"){
+      if(!(o-1 == d || o-2 == d))
+        return false;
+      if(o-2 == d && o != 7)
+          return false;
+    }
+    return true;
+  }
+  piece = piece[1]; //If it's not a pawn can discard the colour data.
+
+
+}
+
+//Allow it to be dropped
+function dragoverAllowDrop(ev) {
+  ev.preventDefault();
+}
+
+//Begin dragging
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("parent", ev.target.parentElement.id);
+  ev.dataTransfer.setData("text", ev.target.id);
 }
 
+//Drop the piece
 function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+  ev.preventDefault();
+  var piece = ev.dataTransfer.getData("text"); //eg wP6
+  var parent = ev.dataTransfer.getData("parent");
+
+
+  origin = parent.substring(5);             //eg: f4
+  destination = ev.target.id.substring(5);  //eg: f5
+
+  if(checkValidMove(piece, origin, destination))
+  ev.target.appendChild(document.getElementById(piece));
+
 }
 
 (function() {
@@ -20,17 +101,14 @@ function drop(ev) {
   //=========================
   // Draw the chess grid.
   //=========================
-  var rows = "8";
-  var columns = "8";
+
   var board = $( "#ChessBoard" );
 
-  var colToLetter = function(col){
-    return ("abcdefgh")[col]
-  }
+
 
   var i =0;
-  for(var r = 0; r < rows; r++) {
-    for(var c = 0; c < columns; c++) {
+  for(var r = 0; r < 8; r++) {
+    for(var c = 0; c < 8; c++) {
 
       if(c%2 == 0 )
       col = -1
@@ -44,7 +122,7 @@ function drop(ev) {
 
       colLetter = colToLetter(c);
 
-      board.append('<div id="grid' + '-' + colLetter + (8-r) + '" class="grid ' +col +'" ondrop="drop(event)" ondragover="allowDrop(event)" />');
+      board.append('<div id="grid' + '-' + colLetter + (8-r) + '" class="grid ' +col +'" ondrop="drop(event)" ondragover="dragoverAllowDrop(event)" />');
 
 
 
@@ -67,7 +145,7 @@ function drop(ev) {
 
   }
 
-  
+
 
   //Draw the white pieces
   drawPawns(2, "w");
