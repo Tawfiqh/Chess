@@ -1,5 +1,6 @@
 // out: ./css/chess.css, sourcemap: true, compress: true
 @import "./variables.less";
+@import "./bootstrapButton.less";
 
 body{
   background-color: #4A525A;
@@ -17,12 +18,18 @@ p{
 
 
 #ChessBoard{
+  
   width: @boardSize;
   height:@boardSize;
 
   background-color: @board-base-colour;
 }
 
+.btn{
+  margin-top:20px;
+font-family: sans-serif;
+text-decoration: none;
+}
 
 @square-size: calc(@boardSize / 8);
 
@@ -31,11 +38,17 @@ p{
   float:left;
   width:@square-size;
   height:@square-size;
+  .piece{
+    width:@square-size;
+    height:@square-size;
+  }
+
+
 
   &.white{
     background-color: white;
   }
   &.black{
-    background-color: black;
+    background-color: #aaa;
   }
 }
