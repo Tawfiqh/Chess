@@ -1,1 +1,1 @@
-body{background-color:#4A525A}h1{color:white;font-family:sans-serif}#ChessBoard{width:400px;height:400px;background-color:#1e1d1e}
+body{background-color:#4A525A}h1{color:white;font-family:sans-serif}#ChessBoard{width:400px;height:400px;background-color:#1e1d1e}.grid{float:left;width:calc(50px);height:calc(50px)}.grid.white{background-color:white}.grid.black{background-color:black}

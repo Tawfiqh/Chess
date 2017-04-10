@@ -22,3 +22,20 @@ p{
 
   background-color: @board-base-colour;
 }
+
+
+@square-size: calc(@boardSize / 8);
+
+.grid{
+
+  float:left;
+  width:@square-size;
+  height:@square-size;
+
+  &.white{
+    background-color: white;
+  }
+  &.black{
+    background-color: black;
+  }
+}
