@@ -10,6 +10,8 @@ function loadGame(){
 
 
 var board = $( "#ChessBoard" );
+var host = "http://chessth.azurewebsites.net/"; //index.html
+
 
 //piece includes colour name eg wP2 or bK
 //Row and column are of the form 1 and a, like the position a1 chess board.
@@ -106,7 +108,7 @@ function saveState(){
   // Sending and receiving data in JSON format using POST mothod
 
   xhr = new XMLHttpRequest();
-  var url = "http://localhost:5000/api/chess";
+  var url = host +"api/chess";
   xhr.open("POST", url, true);
   xhr.setRequestHeader("Content-type", "application/json");
   xhr.onreadystatechange = function () {
@@ -232,7 +234,7 @@ function drop(ev) {
   loadDefaultState();
   else{
     xhr = new XMLHttpRequest();
-    var url = "http://localhost:5000/api/chess/" + gameNumb;
+    var url = host +"api/chess/" + gameNumb;
     xhr.open( "GET", url, true );
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4){
